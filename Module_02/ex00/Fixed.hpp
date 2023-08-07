@@ -14,7 +14,7 @@ class Fixed{
 
     private:
         int _fixPointNum;
-        const static int _fracBits;
+        const static int _fracBits = 8;
 
 };
 
