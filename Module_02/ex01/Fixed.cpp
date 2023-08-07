@@ -28,12 +28,18 @@ Fixed& Fixed::operator=(const Fixed& fixer) {
     return *this;
 }
 
+std::ostream& operator<<(std::ostream& os, const Fixed& fixer) {
+    os << fixer.toFloat();
+    return os;
+}
+
 // Copy constructor
 Fixed::Fixed(const Fixed& copy) {
     std::cout << "Copy constructor called" << std::endl;
     *this = copy;
 }
 
+// Functions
 int Fixed::getRawBits( void ) const {
     return (this->_fixPointNum);
 }
@@ -48,9 +54,4 @@ float Fixed::toFloat( void ) const {
 
 int Fixed::toInt( void ) const {
     return (this->_fixPointNum >> this->_fracBits);
-}
-
-std::ostream& operator<<(std::ostream& os, const Fixed& fixer) {
-    os << fixer.toFloat();
-    return os;
 }

@@ -34,8 +34,8 @@ class Fixed{
         Fixed operator--(int);
 
         static Fixed& min(Fixed& fixer1, Fixed& fixer2);
-        static const Fixed& min(const Fixed& fixer1, const Fixed& fixer2);
         static Fixed& max(Fixed& fixer1, Fixed& fixer2);
+        static const Fixed& min(const Fixed& fixer1, const Fixed& fixer2);
         static const Fixed& max(const Fixed& fixer1, const Fixed& fixer2);
 
         int getRawBits( void ) const;
