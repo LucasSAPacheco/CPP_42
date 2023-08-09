@@ -35,6 +35,8 @@ int main(void){
     printTitle("Killing a CLAP");
     scavName.attack(clap.getName());
     clap.takeDamage(scavName.getAttackDamage());
+    scavName.attack(clap.getName());
+    clap.takeDamage(scavName.getAttackDamage());
 
     printTitle("Killing a SCAV");
     for (int i = 0; i <= 5; i++){

@@ -119,6 +119,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
         << " [HP: " << getHitPoints() << "]"
         << "[Energy: " << getEnergyPoints() << "]" << RES
         << std::endl;
+        this->_energyPoints--;
     } else if (getEnergyPoints() <= 0){
         std::cout << color << "ClapTrap = " << RES 
         << getName()

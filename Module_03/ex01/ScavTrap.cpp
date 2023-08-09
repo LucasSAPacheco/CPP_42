@@ -3,12 +3,12 @@
 
 //====================== Constructor - Destructor ============================//
 ScavTrap::ScavTrap() : ClapTrap(){
-    std::cout << MAGENTA << this->getType() << " = " << RES
-    <<"Default Constructor Called!" << std::endl;
     this->setHitPoints(100);
     this->setEnergyPoints(50);
     this->setAttackDamage(20);
     this->setType("ScavTrap");
+    std::cout << MAGENTA << this->getType() << " = " << RES
+    <<"Default Constructor Called!" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string const name) : ClapTrap(name){
