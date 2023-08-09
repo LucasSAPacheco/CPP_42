@@ -9,17 +9,24 @@ void printTitle(std::string str){
 
 int main(void){
     printTitle("Constructors");
-    ClapTrap test;
-    ClapTrap lucas("Lucas");
+    ClapTrap clap;
+    ClapTrap clapName("Lucas");
+    ClapTrap clapCopy(clapName);
+    ClapTrap clapAssign;
+
+    clapAssign = clap;
 
     printTitle("Fight, Recover and Get Damage");
     for (int i = 0;i <= 10; i++){
-        lucas.attack(test.getName());
-        if (i == 9)
-            lucas.beRepaired(1);
+        clapName.attack(clap.getName());
+        if (i == 8)
+            clapName.beRepaired(1);
     }
-    for (int j = 0; j < 3; j++)
-        test.takeDamage(lucas.getAttackDamage());
+
+    printTitle("Clap Receiving damage");
+    for (int j = 0; j < 3; j++){
+        clap.takeDamage(4);
+    }
 
     printTitle("Destructors");
 }

@@ -27,7 +27,7 @@ ScavTrap::ScavTrap(const ClapTrap &copy) : ClapTrap(copy) {
 }
 
 ScavTrap::ScavTrap(ScavTrap const& copy) : ClapTrap(copy) {
-    std::cout << MAGENTA << this->getType() << " = " << RES
+    std::cout << MAGENTA << copy.getType() << " = " << RES
     << "Copy Constructor Called!" << std::endl;
     *this = copy;
 }
@@ -52,7 +52,7 @@ ScavTrap &ScavTrap::operator=(ScavTrap const & op){
     return (*this);
 }
 
-std::ostream& operator<<(std::ostream& output,const ScavTrap& os){
+std::ostream &operator<<(std::ostream& output,const ScavTrap& os){
     output << os.getName();
     return (output);
 }
