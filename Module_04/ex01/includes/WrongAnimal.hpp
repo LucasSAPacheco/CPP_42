@@ -3,17 +3,22 @@
 
 #include "Animal.hpp"
 
-class WrongAnimal : public Animal{
+class WrongAnimal{
+    protected:
+        std::string type;
+
     public:
         WrongAnimal();
-        WrongAnimal(const Animal &copy);
-        ~WrongAnimal();
+        WrongAnimal(const WrongAnimal& copy);
+        virtual ~WrongAnimal();
 
         WrongAnimal &operator=(const WrongAnimal& copy);
 
-        void makeSound(void) const;
+        void makeSound( void ) const;
+        std::string		getType( void ) const ;
+		void			setType( std::string value );
 };
-    
+
 std::ostream &operator<<(std::ostream &output, const WrongAnimal &o);
 
 #endif

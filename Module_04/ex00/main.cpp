@@ -17,8 +17,7 @@ int main(void){
         Animal *animal = new Animal;
         Animal *cat = new Cat;
         Animal *dog = new Dog;
-        Animal *isAnimal = new WrongAnimal;
-        Animal *isCat = new WrongCat;
+        WrongAnimal *isAnimal = new WrongCat;
 
         std::cout << std::endl;
         printTitle("Sounds");
@@ -26,7 +25,6 @@ int main(void){
         cat->makeSound();
         dog->makeSound();
         isAnimal->makeSound();
-        isCat->makeSound();
 
         std::cout << std::endl;
         printTitle("Destructors");
@@ -34,7 +32,6 @@ int main(void){
         delete cat;
         delete dog;
         delete isAnimal;
-        delete isCat;
         std::cout << std::endl;
         std::cout << std::endl;
         std::cout << std::endl;

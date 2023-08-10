@@ -8,11 +8,12 @@ Cat::Cat(){
     << "Default Constructor Called!" << std::endl;
 }
 
-Cat::Cat(const Animal &copy) : Animal(copy){
+Cat::Cat(const Cat &copy) : Animal(copy){
     this->setType("Cat");
     std::cout << CYAN << this->getType() << " = " << RES
     << "Copy Constructor Called!" << std::endl;
     *this = copy;
+    this->_brain = new Brain(*copy._brain);
 }
 
 Cat::~Cat(){
@@ -36,6 +37,7 @@ Brain *Cat::getBrain(void) const {return (this->_brain);}
 Cat  &Cat::operator=(const Cat& copy){
     if (this != &copy){
         this->type = copy.getType();
+        this->_brain = copy._brain;
         std::cout << CYAN << this->getType() << " = " << RES
         << "Copy Assign Called!" << std::endl;
     }

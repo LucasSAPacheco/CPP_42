@@ -1,9 +1,8 @@
-#include "includes/Animal.hpp"
+#include "includes/AAnimal.hpp"
 #include "includes/Cat.hpp"
 #include "includes/Dog.hpp"
 #include "includes/WrongAnimal.hpp"
 #include "includes/WrongCat.hpp"
-#include "includes/Brain.hpp"
 
 void printTitle(std::string str){
     std::cout << BLUE << std::string(49, '=') << RES << std::endl;
@@ -14,20 +13,25 @@ void printTitle(std::string str){
 
 int main( void ) {
     printTitle("Constructors");
-    Animal *animal = new Animal;
+    // AAnimal *animal = new AAnimal;
     Cat *cat = new Cat;
     Dog *dog = new Dog;
-    // WrongAnimal *wAnimal = new WrongAnimal;
-    // WrongCat *wCat = new WrongCat;
-    // Animal *copy(cat);
+    WrongAnimal *wAnimal = new WrongCat;
+    Cat *copy(cat);
 
     std::cout << std::endl;
     printTitle("Sounds and Type");
-    animal->makeSound();
+    // animal->makeSound();
     std::cout << std::endl;
     cat->makeSound();
     std::cout << std::endl;
     dog->makeSound();
+    std::cout << std::endl;
+    wAnimal->makeSound();
+
+    std::cout << std::endl;
+    printTitle("Copy Tests");
+    copy->makeSound();
 
     // std::cout << std::endl;
     // printTitle("Brain tests");
@@ -42,8 +46,9 @@ int main( void ) {
 
     std::cout << std::endl;
     printTitle("Destructors");
-    delete animal;
+    // delete animal;
     delete cat;
     delete dog;
+    delete wAnimal;
     return 0;
 }

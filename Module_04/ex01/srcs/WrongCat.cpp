@@ -7,7 +7,7 @@ WrongCat::WrongCat(){
     << "Default Constructor Called!" << std::endl;
 }
 
-WrongCat::WrongCat(const Animal &copy) : Animal(copy){
+WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy){
     this->setType("WrongCat");
     std::cout << ORANGE << this->getType() << " = " << RES
     << "Copy Constructor Called!" << std::endl;

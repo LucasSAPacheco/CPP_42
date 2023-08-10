@@ -1,9 +1,9 @@
 #ifndef CAT_HPP
 # define CAT_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-class Cat : public Animal{
+class Cat : public AAnimal{
     public:
         Cat();
         Cat(const Cat &copy);
@@ -12,6 +12,10 @@ class Cat : public Animal{
         Cat &operator=(const Cat& copy);
 
         void makeSound(void) const;
+        Brain *getBrain( void ) const;
+
+    private:
+        Brain *_brain;
 };
     
 std::ostream &operator<<(std::ostream &output, const Cat &o);

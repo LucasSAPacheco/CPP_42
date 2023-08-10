@@ -2,21 +2,24 @@
 
 //======================== Constructors e Desctructor ========================//
 Cat::Cat(){
+    this->_brain = new Brain;
     this->setType("Cat");
     std::cout << CYAN << this->type << " = "<< RES
     << "Default Constructor Called!" << std::endl;
 }
 
-Cat::Cat(const Cat &copy) : Animal(copy){
+Cat::Cat(const Cat &copy) : AAnimal(copy){
     this->setType("Cat");
     std::cout << CYAN << this->getType() << " = " << RES
     << "Copy Constructor Called!" << std::endl;
     *this = copy;
+    this->_brain = new Brain(*copy._brain);
 }
 
 Cat::~Cat(){
     std::cout << CYAN << this->getType() << " = " << RES
     << "Destructor Called!" << std::endl;
+    delete this->_brain;
 }
 
 
@@ -25,6 +28,9 @@ void Cat::makeSound(void) const {
     std::cout << CYAN << this->getType() << " = " << RES
     << "Miauuuuu Meawwwwwwwwwwww" << std::endl;
 }
+
+Brain *Cat::getBrain(void) const {return (this->_brain);}
+
 
 
 //================================ Overloads =================================//

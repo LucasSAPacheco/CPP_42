@@ -8,11 +8,12 @@ Dog::Dog(){
     << "Default Constructor Called!" << std::endl;
 }
 
-Dog::Dog(const Animal &copy) : Animal(copy){
+Dog::Dog(const Dog &copy) : Animal(copy){
     this->setType("Dog");
     std::cout << GREEN << this->getType() << " = " << RES
     << "Copy Constructor Called!" << std::endl;
     *this = copy;
+    this->_brain = new Brain(*copy._brain);
 }
 
 Dog::~Dog(){

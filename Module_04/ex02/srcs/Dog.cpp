@@ -2,21 +2,24 @@
 
 //======================== Constructors e Desctructor ========================//
 Dog::Dog(){
+    this->_brain = new Brain;
     this->setType("Dog");
     std::cout << GREEN << this->type << " = "<< RES
     << "Default Constructor Called!" << std::endl;
 }
 
-Dog::Dog(const Dog &copy) : Animal(copy){
+Dog::Dog(const Dog &copy) : AAnimal(copy){
     this->setType("Dog");
     std::cout << GREEN << this->getType() << " = " << RES
     << "Copy Constructor Called!" << std::endl;
     *this = copy;
+    this->_brain = new Brain(*copy._brain);
 }
 
 Dog::~Dog(){
     std::cout << GREEN << this->getType() << " = " << RES
     << "Destructor Called!" << std::endl;
+    delete this->_brain;
 }
 
 
@@ -26,6 +29,7 @@ void Dog::makeSound(void) const {
     << "AU AU OSWALDO" << std::endl;
 }
 
+Brain *Dog::getBrain(void) const {return (this->_brain);}
 
 //================================ Overloads =================================//
 Dog  &Dog::operator=(const Dog& copy){

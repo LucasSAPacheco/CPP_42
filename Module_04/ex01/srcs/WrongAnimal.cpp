@@ -1,43 +1,48 @@
 #include "../includes/WrongAnimal.hpp"
 
-//======================== Constructors e Desctructor ========================//
-WrongAnimal::WrongAnimal(){
-    this->setType("WrongAnimal");
-    std::cout << PINK << this->type << " = "<< RES
-    << "Default Constructor Called!" << std::endl;
+//======================== Constructor and Destructor ========================//
+WrongAnimal::WrongAnimal( void ) : type("WrongAnimal"){
+    std::cout << YELLOW << "WrongAnimal = " << RES
+    << "Default Constructor Called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const Animal &copy) : Animal(copy){
-    this->setType("WrongAnimal");
-    std::cout << PINK << this->getType() << " = " << RES
+WrongAnimal::WrongAnimal(const WrongAnimal& copy) : type("WrongAnimal"){
+    std::cout << YELLOW << "WrongAnimal = " << RES
     << "Copy Constructor Called!" << std::endl;
     *this = copy;
 }
 
 WrongAnimal::~WrongAnimal(){
-    std::cout << PINK << this->getType() << " = " << RES
+    std::cout << YELLOW << "WrongAnimal = " << RES
     << "Destructor Called!" << std::endl;
 }
 
 
-//============================ Member Functions ==============================//
-void WrongAnimal::makeSound(void) const {
-    std::cout << PINK << this->getType() << " = " << RES
-    << "tsssss, raaaaawwwwrrrr, greeg, pocoto, What's that?" << std::endl;
+///=========================== Membes Functions ==============================//
+void WrongAnimal::makeSound( void ) const {
+    std::cout << YELLOW << this->getType() << " = " << RES
+    << "CHEWWWWWWW CHEWWWWWW, maybe a Chewbacca, who knows?!!"
+    << RES << std::endl;
 }
 
 
 //================================ Overloads =================================//
-WrongAnimal  &WrongAnimal::operator=(const WrongAnimal& copy){
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal& copy){
     if (this != &copy){
         this->type = copy.getType();
-        std::cout << PINK << this->getType() << " = " << RES
-        << "Copy Assign Called!" << std::endl;
+        std::cout << YELLOW << "WrongAnimal = " << RES
+        << "Copy Assign Operator Called" << std::endl;
     }
     return (*this);
 }
 
 std::ostream &operator<<(std::ostream &output, const WrongAnimal &o){
-    output << PINK << "Value = " << o.getType() << RES;
+    output << YELLOW << "Operator \"<<\" Called from = " << o.getType()
+    << RES;
     return (output);
 }
+
+
+//=========================== Getters and Setters ============================//
+std::string WrongAnimal::getType(void) const {return this->type;}
+void WrongAnimal::setType(std::string type){this->type = type;}
