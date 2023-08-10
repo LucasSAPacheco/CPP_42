@@ -16,6 +16,8 @@ int main( void ) {
     Animal *animal = new Animal;
     Cat *cat = new Cat;
     Dog *dog = new Dog;
+    WrongAnimal *wAnimal = new WrongAnimal;
+    WrongCat *wCat = new WrongCat;
     Animal *copy(cat);
 
     std::cout << std::endl;
@@ -25,20 +27,24 @@ int main( void ) {
     cat->makeSound();
     std::cout << std::endl;
     dog->makeSound();
+    std::cout << std::endl;
+    wAnimal->makeSound();
+    std::cout << std::endl;
+    wCat->makeSound();
 
     std::cout << std::endl;
     printTitle("Copy Tests");
     copy->makeSound();
 
-    std::cout << std::endl;
-    printTitle("Brain tests");
-    for (int i = 0; i < 100; i++){
-        if (i < 50){
-            std::cout << cat->getBrain()->getIdeas(i) << std::endl;
-        } else {
-            std::cout << dog->getBrain()->getIdeas(i) << std::endl;
-        }
-    }
+    // std::cout << std::endl;
+    // printTitle("Brain tests");
+    // for (int i = 0; i < 100; i++){
+    //     if (i < 50){
+    //         std::cout << cat->getBrain()->getIdeas(i) << std::endl;
+    //     } else {
+    //         std::cout << dog->getBrain()->getIdeas(i) << std::endl;
+    //     }
+    // }
     
 
     std::cout << std::endl;
