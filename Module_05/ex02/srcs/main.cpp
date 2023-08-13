@@ -93,8 +93,8 @@ void presidentialPardonFormTest(void)
 
 int main()
 {
-	// shurberyCreationFormTest();
-	// robotomyRequestFormTest();
+	shurberyCreationFormTest();
+	robotomyRequestFormTest();
 	presidentialPardonFormTest();
 	return (0);
 }
