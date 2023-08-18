@@ -3,7 +3,7 @@
 
 #include "AForm.hpp"
 
-class RobotomyRequestForm : public AForm
+class RobotomyReqestFormu : public AForm
 {
 
     public:

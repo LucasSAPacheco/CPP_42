@@ -5,6 +5,7 @@ int replaceStr( std::string file, std::string s1, std::string s2 ) {
     std::ofstream ofs;
     size_t i;
     std::string out_file;
+    bool control = false;
 
     ifs.open(file.c_str());
     if (!ifs.is_open())
@@ -20,12 +21,14 @@ int replaceStr( std::string file, std::string s1, std::string s2 ) {
             if (i < file.length()) {
                 file.erase(i, s1.length());
                 file.insert(i, s2);
+                control = true;
             }
         }
         ofs << file << std::endl;
         if (ifs.eof())
             break;
     }
+     if (control == false){return (3);}
     return (0);
 }
 
@@ -42,6 +45,8 @@ int main( int argc, char **argv) {
         std::cout << ERROR_OPEN << std::endl;
     else if (control == 2)
         std::cout << ERROR_WRITE << std::endl;
+    else if (control == 3)
+        std::cout << ERROR_NOTHING << std::endl;
     else
         std::cout << SUCCESS << std::endl;
     return (0);
