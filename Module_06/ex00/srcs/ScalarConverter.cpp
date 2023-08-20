@@ -1,4 +1,4 @@
-#include "../include/ScalarConverter.hpp"
+#include "../includes/ScalarConverter.hpp"
 
 std::string	ScalarConverter::_str = "";
 std::string	ScalarConverter::_type = "";
@@ -8,38 +8,43 @@ double		ScalarConverter::_double = 0;
 char		ScalarConverter::_char = 0;
 size_t		ScalarConverter::_precision = 0;
 
-/*--- CONSTRUCTORS AND DESTRUCTOR --------------------------------------------*/
+// ==== Constructors and Destructor ==========================================//
 ScalarConverter::ScalarConverter() {}
-ScalarConverter::ScalarConverter(const ScalarConverter& copy) { (void) copy; }
+
+ScalarConverter::ScalarConverter(const ScalarConverter& copy) {
+	(void) copy; 
+}
+
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs) {
 	(void) rhs;
 	return *this;
 }
+
 ScalarConverter::~ScalarConverter() {}
 
-/*--- MEMBER FUNCTIONS -------------------------------------------------------*/
+// ==== Member Functions =====================================================//
 
 void	ScalarConverter::convert(const std::string literal)
 {
 	_str = literal;
-	if (_isDouble())
-		_convertDouble();
-	else if (_isFloat())
-		_convertFloat();
-	else if (_isInt())
-		_convertInt();
-	else if (_isChar())
-		_convertChar();
-	else if (_isPseudoLiteral()) {
-		_printPseudoLiteral();
+	if (isDouble())
+		convertToDouble();
+	else if (isFloat())
+		convertToFloat();
+	else if (isInt())
+		convertToInt();
+	else if (isChar())
+		convertToChar();
+	else if (isPseudoLiteral()) {
+		printPseudoLiteral();
 		return ;
 	}
 	else
 		throw InvalidTypeException();
-	_printConversions();
+	printConversions();
 }
 
-void	ScalarConverter::_convertChar()
+void	ScalarConverter::convertToChar()
 {
 	std::istringstream	iss(_str);
 
@@ -50,7 +55,7 @@ void	ScalarConverter::_convertChar()
 	_double = static_cast<double>(_char);
 }
 
-void	ScalarConverter::_convertInt()
+void	ScalarConverter::convertToInt()
 {
 	std::istringstream	iss(_str);
 
@@ -62,19 +67,7 @@ void	ScalarConverter::_convertInt()
 	_double = static_cast<double>(_int);
 }
 
-void	ScalarConverter::_convertFloat()
-{
-	std::istringstream	iss(_str);
-
-	_type = "float";
-	if (!(iss >> _float))
-		throw InvalidFloatException();
-	_char = static_cast<char>(_float);
-	_int = static_cast<int>(_float);
-	_double = static_cast<double>(_float);
-}
-
-void	ScalarConverter::_convertDouble()
+void	ScalarConverter::convertToDouble()
 {
 	std::istringstream	iss(_str);
 
@@ -86,8 +79,29 @@ void	ScalarConverter::_convertDouble()
 	_float = static_cast<float>(_double);
 }
 
-/* Add 'f' to double pseudo literal */
-std::string	ScalarConverter::_floatPseudoLiteral()
+void	ScalarConverter::convertToFloat()
+{
+	std::istringstream	iss(_str);
+
+	_type = "float";
+	if (!(iss >> _float))
+		throw InvalidFloatException();
+	_char = static_cast<char>(_float);
+	_int = static_cast<int>(_float);
+	_double = static_cast<double>(_float);
+}
+
+std::string	ScalarConverter::doublePseudoLiteral()
+{
+	std::string	copy = _str;
+	if (copy == "nanf")
+		return "nan";
+	else if (copy.length() == 5)
+		return copy.substr(0, copy.length() - 1);
+	return _str;
+}
+
+std::string	ScalarConverter::floatPseudoLiteral()
 {
 	std::string	copy = _str;
 	if (copy == "nan" || copy == "nanf")
@@ -97,13 +111,3 @@ std::string	ScalarConverter::_floatPseudoLiteral()
 	return _str;
 }
 
-/* Remove 'f' from a float pseudo literal */
-std::string	ScalarConverter::_doublePseudoLiteral()
-{
-	std::string	copy = _str;
-	if (copy == "nanf")
-		return "nan";
-	else if (copy.length() == 5)
-		return copy.substr(0, copy.length() - 1);
-	return _str;
-}

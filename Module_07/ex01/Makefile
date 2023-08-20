@@ -1,21 +1,18 @@
-NAME	=	converter
+NAME	=	iter
 
 SRCS	=	$(MAIN)
-
-MAIN	=	main.cpp ScalarConverter.cpp ScalarCheckers.cpp \
-			ScalarExceptions.cpp ScalarPrints.cpp 
+MAIN	=	main.cpp
 
 OBJ_DIR	=	obj
-
 OBJS	=	$(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
-CC 		=	c++
 
+CC 		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -g3
 
-VPATH	=	./includes ./srcs
+VPATH	=	./
 
-HEADER	=	ScalarConverter.hpp
+HEADER	=	iter.hpp
 
 INCLUDE	=	-I ./ -I ./includes
 

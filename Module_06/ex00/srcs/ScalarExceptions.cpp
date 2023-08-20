@@ -1,6 +1,6 @@
-#include "../include/ScalarConverter.hpp"
+#include "../includes/ScalarConverter.hpp"
 
-bool	ScalarConverter::_intOverflow()
+bool	ScalarConverter::intOverflow()
 {
 	if (_double < std::numeric_limits<int>::min()
 		|| _double > std::numeric_limits<int>::max())
@@ -8,7 +8,7 @@ bool	ScalarConverter::_intOverflow()
 	return false;
 }
 
-bool	ScalarConverter::_floatOverflow()
+bool	ScalarConverter::floatOverflow()
 {
 	double	float_max = std::numeric_limits<float>::max();
 	if (_double < -float_max || _double > float_max)
@@ -16,7 +16,7 @@ bool	ScalarConverter::_floatOverflow()
 	return false;
 }
 
-bool	ScalarConverter::_charOverflow()
+bool	ScalarConverter::charOverflow()
 {
 	if (_double < std::numeric_limits<char>::min()
 		|| _double > std::numeric_limits<char>::max())

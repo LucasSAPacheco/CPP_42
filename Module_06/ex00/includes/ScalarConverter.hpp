@@ -6,6 +6,8 @@
 # include <iomanip>
 # include <limits>
 # include <cmath>
+# include <sstream>
+# include <memory>
 
 class ScalarConverter {
 public:
@@ -25,14 +27,14 @@ private:
 	static double		_double;
 	static size_t		_precision;
 
-	static void			convertFloat();
-	static void			convertDouble();
-	static void			convertInt();
-	static void			convertChar();
+	static void			convertToFloat();
+	static void			convertToDouble();
+	static void			convertToInt();
+	static void			convertToChar();
 	static std::string	floatPseudoLiteral();
 	static std::string	doublePseudoLiteral();
 
-// ==== CHECKERS =============================================================//
+// ==== Checkers =============================================================//
 	static bool	isFloat();
 	static bool	isDouble();
 	static bool	isInt();
@@ -40,9 +42,11 @@ private:
 	static bool	isPseudoLiteral();
 	static bool isNumber(int c);
 	static bool	isDisplayableChar(char c);
-	static bool	hasSign();
+	static bool	intOverflow();
+	static bool	floatOverflow();
+	static bool	charOverflow();
 
-// ==== PRINT ================================================================//
+// ==== Prints ================================================================//
 	static void	printChar();
 	static void	printInt();
 	static void	printFloat();
@@ -50,11 +54,7 @@ private:
 	static void	printConversions();
 	static void	printPseudoLiteral();
 
-// ==== EXCEPTIONS ===========================================================//
-	static bool	_intOverflow();
-	static bool	_floatOverflow();
-	static bool	_charOverflow();
-
+// ==== Exceptions ===========================================================//
 	class InvalidTypeException: public std::exception {
 		public: virtual const char* what() const throw();
 	};
@@ -63,11 +63,10 @@ private:
 		public: virtual const char* what() const throw();
 	};
 
-	class InvalidFloatException: public std::exception {
+	class InvalidDoubleException: public std::exception {
 		public: virtual const char* what() const throw();
 	};
-
-	class InvalidDoubleException: public std::exception {
+	class InvalidFloatException: public std::exception {
 		public: virtual const char* what() const throw();
 	};
 };
