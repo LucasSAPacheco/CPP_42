@@ -16,6 +16,7 @@ int main( void ) {
     printTitle("Constructors");
     Animal *animal = new Animal;
     Cat *cat = new Cat;
+    Cat *cat2 = new Cat(*cat);
     Dog *dog = new Dog;
     // WrongAnimal *wAnimal = new WrongAnimal;
     // WrongCat *wCat = new WrongCat;
@@ -29,21 +30,22 @@ int main( void ) {
     std::cout << std::endl;
     dog->makeSound();
 
-    // std::cout << std::endl;
-    // printTitle("Brain tests");
-    // for (int i = 0; i < 100; i++){
-    //     if (i < 50){
-    //         std::cout << cat->getBrain()->getIdeas(i) << std::endl;
-    //     } else {
-    //         std::cout << dog->getBrain()->getIdeas(i) << std::endl;
-    //     }
-    // }
+    std::cout << std::endl;
+    printTitle("Brain tests");
+    for (int i = 0; i < 100; i++){
+        if (i < 50){
+            std::cout << cat2->getBrain()->getIdeas(i) << std::endl;
+        } else {
+            std::cout << dog->getBrain()->getIdeas(i) << std::endl;
+        }
+    }
     
 
     std::cout << std::endl;
     printTitle("Destructors");
     delete animal;
     delete cat;
+    delete cat2;
     delete dog;
     return 0;
 }
