@@ -14,10 +14,10 @@ void iter(T* array, size_t size, void (*f)(T& elem)){
         f(array[i]);
 }
 
-template <typename T>
-size_t	getSize(const T& array)
-{
-	return sizeof(array) / sizeof(array[0]);
+template<typename T>
+void iter(const T* array, size_t size, void (*f)(const T& elem)){
+    for (size_t i = 0; i < size; i++)
+        f(array[i]);
 }
 
 template <typename T>

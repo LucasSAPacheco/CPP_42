@@ -8,17 +8,19 @@ void printTitle(std::string str){
 }
 
 int main(void){
-    int intArray[] = {1, 2, 3, 4, 5};
+    const int intArray[5] = {1, 2, 3, 4, 5};
+    int intArray2[5] = {1, 2, 3, 4, 5};
 
     printTitle("Print int array");
-    iter(intArray, getSize(intArray), print);
-    iter(intArray, getSize(intArray), plusTen);
-    iter(intArray, getSize(intArray), print);
+    iter(intArray, 5, print);
+    iter(intArray2, 5, print);
+    iter(intArray2, 5, plusTen);
+    iter(intArray2, 5, print);
     std::cout << std::endl;
 
     printTitle("Print char array");
-    std::string stringArray[] = {"one", "two", "three"};
-    iter(stringArray, getSize(stringArray), print);
+    std::string stringArray[3] = {"one", "two", "three"};
+    iter(stringArray, 3, print);
     std::cout << std::endl;
 
 
