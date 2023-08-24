@@ -12,6 +12,7 @@ int main( void )
 	{
 		printTitle("MutantStack");
 		MutantStack<int> mstack;
+		// MutantStack<int> mstack2;
 		
 		mstack.push(1);
 		mstack.push(20);
@@ -36,6 +37,7 @@ int main( void )
 			++itBegin;
 		}
 
+		// mstack2 = mstack; // Teste do operador de igual
         // Passando o MutantStack para um container std::stack
 		std::stack<int> s(mstack);
 	}

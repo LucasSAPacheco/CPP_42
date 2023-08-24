@@ -22,14 +22,12 @@ class MutantStack : public std::stack<T>
 {
 	public:
 		MutantStack( void ) {};
-		MutantStack(const MutantStack &ms)
-		{
+		MutantStack(const MutantStack &ms){
 			*this = ms;
 		}
-		MutantStack &operator=(const MutantStack &ms)
-		{
+		MutantStack &operator=(const MutantStack &ms){
 			if (this != &ms)
-				*this = ms;
+				std::stack<T>::operator=(ms);
 			return (*this);
 		}
 		~MutantStack( void ) {};
